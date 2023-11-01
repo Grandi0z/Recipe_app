@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  def index
+  def show
     @user = current_user
     @foods = @user.foods
     @recipes = @user.recipes
   end
-
-  def show; end
 end

@@ -1,2 +1,21 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<h1>Recipes</h1>
+<div>
+  <%# flash messages %>
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%= type %>"><%= message %></div>
+  <% end %>
+  <div>
+    <%=
+        link_to "Create recipe",
+        new_user_recipe_path,
+        class:"btn btn-outline-primary my-3"
+    %>
+  </div>
+  <div>
+    <%@recipes.each do |recipe|%>
+        <%= render partial: "partials/recipe_item", locals: {recipe:recipe}%>
+      <%# In case we have a error %>
+      <%= render partial: "partials/errors", locals: { errors: recipe.errors } %>
+    <%end%>
+  </div>
+</div>

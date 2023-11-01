@@ -1,0 +1,24 @@
+<div>
+     <div class='my-3' style="display:flex; justify-content:space-around;">
+    <%=button_to "Generate shopping list", new_user_food_path, class:"btn btn-outline-info"%>
+    <%=link_to "Add incredient", new_user_recipe_recipe_food_path(@user, @recipe), class:"btn btn-outline-info"%>
+  </div>
+   <table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Value</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@recipe_foods.each_with_index do |rf, index|%>
+        <%= render partial: "partials/recipe_food_item", locals: {rf:rf, index:index} %>
+        <%# In case we have a error %>
+  <%= render partial: "partials/errors", locals: { errors: rf.errors } %>
+      <%end%>
+    </tbody>
+  </table>
+</div>

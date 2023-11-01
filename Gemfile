@@ -81,3 +81,5 @@ gem 'devise', '~> 4.9'
 gem 'cssbundling-rails'
 
 gem 'bootstrap_form', '~> 5.4'
+
+gem 'sassc'

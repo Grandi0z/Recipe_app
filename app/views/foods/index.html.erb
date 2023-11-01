@@ -18,6 +18,7 @@
         <th scope="col">Food</th>
         <th scope="col">Measurement unit</th>
         <th scope="col">Unit price</th>
+        <th scope="col">Quantity</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -28,12 +29,13 @@
           <td><%=food.name%></td>
           <td><%=food.measurement_unit%></td>
           <td><%=food.price%>$</td>
+          <td><%=food.quantity%>$</td>
           <td>
             <%if can? :delete, food%>
               <%=button_to 'Delete',
                     [@user, food],
                     method: :delete,
-                    class: "btn btn-outline-danger btn-del-post"
+                    class: "btn btn-outline-danger"
                 %>
             <%end%>
           </td>
