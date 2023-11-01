@@ -1,2 +1,11 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<h1>Create recipe</h1>
+<div>
+  <%= bootstrap_form_for @recipe, url: user_recipes_path(@user), class:"form" do |f| %>
+    <%= f.text_field :name, style:"width:50%" %>
+    <%= f.number_field :preparation_time, min: 0, style:"width:50%" %>
+    <%= f.number_field :cooking_time, min: 0, style:"width:50%" %>
+    <%= f.text_area :description, style:"width:50%" %>
+    <%= f.check_box :public %>
+    <%= f.submit %>
+  <% end %>
+</div>

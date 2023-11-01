@@ -4,8 +4,6 @@ class FoodsController < ApplicationController
     @foods = @user.foods
   end
 
-  def show; end
-
   def new
     if user_signed_in?
       @food = @user.foods.new

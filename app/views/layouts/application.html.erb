@@ -12,6 +12,12 @@
   </head>
 
   <body>
+    <div id = "header">
+        <h1>Recipe App</h1>
+        <%if current_user.present?%>
+        <%= render partial:"partials/navbar"%>
+        <%end%>
+    </div>
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
     <%= yield %>
