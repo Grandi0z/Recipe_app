@@ -1,0 +1,8 @@
+<h1>Public Recipes</h1>
+<div>
+    <%# groupe recipe and it's details ingredient in a hash %>
+    <%hash_recipes = group_by_recipe(@recipes_foods)%>
+    <%hash_recipes.each do |recipe_item|%>
+       <%= render partial: "partials/public_recipe_item", locals: {recipe_food:recipe_item, user:@user}%>
+    <%end%>
+</div>
