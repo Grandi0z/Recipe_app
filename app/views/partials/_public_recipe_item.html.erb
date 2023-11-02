@@ -1,0 +1,30 @@
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <%# recipe_food is a array in witch the first element is the recipe object
+          and second element is a aray of food and quantity hahes
+          that means recipe_food look like this [{recipe=>[{food,quantity},{food,quantity}]}] %>
+      <%=link_to user_recipe_path(user, recipe_food[0]) do%>
+        <h3><%=recipe_food[0].name%></h3> 
+      <%end%>
+      <em>Created by : <%=recipe_food[0].user.name%></em>
+      <%if can? :delete, recipe_food[0]%>
+        <%= 
+            button_to "Remove",
+            [@user, recipe_food[0]],
+            method: :delete,
+            class:"btn btn-outline-danger"
+        %>
+      <%end%>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" >
+        <ul class="card-text" style="list-style: none;">
+          <li><strong>Total food items: <%=recipe_food[1].length %></strong></li>
+          <li><strong>Total price: <%=recipe_value(recipe_food[1])%>$ </strong></li>
+        </ul>
+        <p class="card-text"><small class="text-body-secondary">Added : <%=recipe_food[0].created_at%></small></p>
+      </div>
+    </div>
+  </div>
+</div>
