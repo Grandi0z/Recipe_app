@@ -1,0 +1,53 @@
+.table-body {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.table-head {
+  width: 100%;
+}
+
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.table-cell-1 {
+  width: 5%;
+}
+
+.table-cell-2 {
+  width: 20%;
+}
+
+.table-cell-3 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  width: 40%;
+}
+
+.table-cell-4 {
+  width: 2%;
+}
+
+.table-cell-5 {
+  width: 35%;
+}
+
+.table-cell-6 {
+  display: flex;
+  column-gap: 0.2rem;
+  width: 40%;
+}
+
+.head-row {
+  font-weight: 800;
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 0.1rem solid black;
+}

@@ -1,8 +1,5 @@
 <h1>Edit the Quantity of <%=@food.name%></h1>
 <div>
-  <% flash.each do |type, message| %>
-    <div class="alert alert-<%= type %>"><%= message %></div>
-  <% end %>
   <%= bootstrap_form_for @recipe_food, url: user_recipe_recipe_food_path(@user, @recipe, @recipe_food), class:'form' do |f| %>
     <%= f.number_field :quantity, 
       min: 0, class:"", style:"width:50%",

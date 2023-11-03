@@ -1,73 +1,60 @@
-<h1>Add ingrediens</h1>
-<div>
-  <% flash.each do |type, message| %>
-    <div class="alert alert-<%= type %>"><%= message %></div>
-  <% end %>
-  <table class="table table-striped-columns">
-    <thead>
-      <tr>
-        <th scope="col">No</th>
-        <th scope="col">Food</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%@foods.each_with_index do |food, index|%>
-        <%= form_for @recipe_food, url: user_recipe_recipe_foods_path(@user, @recipe), method: :post do |f| %>
-          <tr>
-            <th scope="row"><%=index + 1%></th>
-            <td><%=food.name%></td>
-            <td style="display:flex;
-                        justify-content: flex-start;
-                        align-items: baseline;
-                        column-gap: 0.5rem;">
-              <%= f.hidden_field :food_id, value:food.id %>
-              <%= f.number_field :quantity,
-                    required: true, min: 0,  step:0.1 ,
-                    class:"form-control", 
-                    style:"width: 50%",
-                    placeholder:"Enter quantity"%>
-              <%=food.measurement_unit%>
-            </td>
-            <td>
-              <%=f.submit 'Add food',
-                        class: "btn btn-outline-success"
-                    %>
-            </td>
-          </tr>
-        <%end%>
-        <%end%>
-        <%= form_for @recipe_food, url: user_recipe_recipe_foods_path(@user, @recipe), method: :post do |f| %>
-          <%# In case use want to add incredient wich is not in list %>
-          <tr>
-            <th scope="row">
-              <%= @foods.size + 1 %>
-            </th>
-            <td>
-              <%= f.text_field :food,
-                    required: true,  
-                    class: "form-control", 
-                    placeholder: "Enter food name" %>
-            </td>
-            <td style="display:flex;
-                justify-content: flex-start;
-                align-items: baseline;
-                column-gap: 0.5rem;">
-              <%= f.number_field :quantity, 
-                    required: true,
-                    min: 0, step: 0.1, 
-                    class: "form-control", style: "width: 50%", 
-                    placeholder: "Enter quantity" %>
-              <%= f.select :food,   
-                    options_for_select(["g", "kg", "ml", "l", "tsp", "tbsp", "cup"]), 
-                    class: "form-select" %>
-            </td>
-            <td><%= f.submit 'Add new food', 
-                    class: "btn btn-outline-success" %></td>
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
-  <%= render partial: "partials/errors", locals: { errors: @recipe_food.errors } %>
+<h1>Add ingrediens to <%= @recipe.name %></h1>
+<div class="table-body">
+      <div class="table-row head-row" >
+        <div class="table-cell-1">No</div>
+        <div class="table-cell-2">Food</div>
+        <div class="table-cell-3">Quantity</div>
+        <div>Action</div>
+      </div>
+  <div>
+    <% @foods.each_with_index do |food, index| %>
+      <%= form_for @recipe_food, url: user_recipe_recipe_foods_path(@user, @recipe), method: :post do |f| %>
+        <div class="table-row">
+          <div class="table-cell-1">
+            <%= index + 1 %>
+          </div>
+          <div class="table-cell-2">
+            <%= food.name %>
+          </div>
+          <div class="table-cell-3">
+            <%= f.hidden_field :food_id, value: food.id %>
+            <%= f.number_field :quantity, required: true, min: 0, step: 0.1,
+                                class: "form-control", style: "width:60%", placeholder: "Enter quantity"%>
+             <strong> <%= food.measurement_unit %></strong> 
+          </div>
+          <div class="table-cell">
+            <%= f.submit "Add ingredien", class: "btn btn-outline-success" %>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+    <% end %>
+    <p>Add new food :</p>
+    <%= form_for @food, url: user_foods_path(@user), method: :post do |f| %>
+      <% # In case use want to add incredient wich is not in list %>
+      <div class="table-row">
+        <div class="table-cell-4">
+          <%= @foods.size + 1 %>
+        </div>
+        <div class="table-cell-5">
+          <%= f.text_field :name, required: true, class: "form-control",
+                                  placeholder: "Enter food name" %>
+        </div>
+        <div class="table-cell-6" style="">
+          <%= f.number_field :quantity, required: true, min: 0, step: 0.1,
+                                        class: "form-control",
+                                        placeholder: "Enter quantity" %>
+          <%= f.select :measurement_unit,
+                       options_for_select(["gr", "kg", "ml", "li", "tsp", "tbsp", "cup"]),
+                       class: "form-select form-select-lg mb-3" %>
+          <%= f.number_field :price, required: true, min: 0, step: 0.1,
+                                     class: "form-control",
+                                     placeholder: "Enter unit price" %>$ 
+        </div>
+        <div class="table-cell">
+          <%= f.submit "Add new food", class: "btn btn-outline-success" %>
+        </div>
+      </div>
+    <% end %> 
+  </div>
 </div>

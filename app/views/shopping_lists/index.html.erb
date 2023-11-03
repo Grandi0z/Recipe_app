@@ -1,0 +1,30 @@
+<h1>Shopping list</h1>
+<div>
+    <ul style="list-style: none; display: flex;
+                justify-content: space-around;">
+        <li><strong>Amount of food item to buy: <%=@shopping_list.length%></strong></li>
+        <li><strong>Total value of food needed: <%=@total_price%>$</strong></li>
+    </ul>
+    <table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@shopping_list.each_with_index do |food, index|%>
+      <%# food is now an array in wish the first element is food id
+      and the second, infos a hash of <food> info's %>
+        <tr>
+          <th scope="row"><%=index + 1%></th>
+          <td><%=food[1][:name]%></td>
+          <td><%=food[1][:quantity]%> <%=food[1][:measurement_unit]%></td>
+          <td><%=food[1][:total_price_item]%>$</td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
