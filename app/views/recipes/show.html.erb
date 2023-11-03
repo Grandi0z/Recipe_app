@@ -9,7 +9,7 @@
         coking time: <%=minutes_to_hours(@recipe.cooking_time)%>
       </strong>
     </div>
-    <%= form_for @recipe, url: user_recipe_path(@user, @recipe), method: :patch do |f| %>
+    <%= form_for @recipe, url: user_recipe_path(@recipe.user, @recipe), method: :patch do |f| %>
           <div class="form-check toggle_btn form-switch" role="group" aria-label="Basic radio toggle button group">
             <%= f.label :public, @recipe.public? ? "Public" : "Private", class: "btn btn-outline-info", for: "public" %>
             <%if can? :manage, @recipe%>
