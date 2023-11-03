@@ -90,10 +90,12 @@ Before to run the program, verify that you have Ruby installed on your OS runnin
 
 Run the following command inside the project folder:
 1. Open your terminal and navigate to the root directory of your project.
-2. run ```$ rails server```
-3. open your navigator
-4. Go to ```http://localhost:3000/```
-5. Enjoy
+2. Run ```bundle install``` to install the required gems.
+3. Run ```rails db:create``` and ```rails db:migrate``` to create and set up the database.
+4. `rails server` to start the app on `http://localhost:3000`.
+5. open your navigator
+6. Go to ```http://localhost:3000/```
+7. Enjoy
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
