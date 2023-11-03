@@ -48,3 +48,5 @@ private
 def set_user
   @user = User.includes(:foods).find(params[:user_id])
 end
+
+def update_quantity; end

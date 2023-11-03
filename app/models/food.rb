@@ -3,7 +3,8 @@ class Food < ApplicationRecord
   validates :measurement_unit, presence: true, length: { in: 2..250 }
   validates :price, numericality: { only_decimal: true, greater_than_or_equal_to: 0 }
   validates :quantity, numericality: { only_decimal: true, greater_than_or_equal_to: 0 }
-  has_many :recipe_foods, foreign_key: 'food_id'
+  has_many :recipe_foods, foreign_key: 'food_id', dependent: :destroy
+  has_many :recipes, through: :recipe_foods
 
   belongs_to :user
 end

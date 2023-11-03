@@ -6,15 +6,12 @@ class RecipeFoodsController < ApplicationController
     @foods = @user.foods
   end
 
-  def show; end
-
   def new
     if user_signed_in?
+      @food = Food.new # for the form that adds food
       @foods = @user.foods
       @recipe_food = @recipe.recipe_foods.new
-      respond_to do |format|
-        format.html { render :new, locals: { recipe_food: @recipe_food } }
-      end
+      render :new
     else
       redirect_to new_user_session_path, alert: 'You must be logged in to continue.'
     end

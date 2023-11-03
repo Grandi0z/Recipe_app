@@ -7,7 +7,7 @@ class Ability
 
     can :manage, Food, user_id: user.id
     can :manage, Recipe, user_id: user.id
-    can :manage, RecipeFood
+    can :manage, RecipeFood, recipe: { user_id: user.id }
     return unless user.admin?
 
     can :manage, :all

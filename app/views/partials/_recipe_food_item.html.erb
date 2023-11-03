@@ -4,14 +4,14 @@
   <td><%=rf.quantity%></td>
   <td><%= value(rf.food.price, rf.quantity) %></td>
   <td>
-    <%if can? :delete, rf%>
+    <%if can? :manage, rf%>
       <%=link_to "Remove",
                     [@user, @recipe, rf],
                     method: :delete,
                     class: "btn btn-outline-danger"
                 %>
     <%end%>
-    <%if can? :update, rf%>
+    <%if can? :manage, rf%>
       <%=link_to 'Modifiy',
                     edit_user_recipe_recipe_food_path(@user, @recipe, rf),
                     class: "btn btn-outline-info"

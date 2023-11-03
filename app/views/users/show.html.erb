@@ -1,8 +1,4 @@
 <h1>Profil</h1>
-<%# flash messages %>
-<% flash.each do |type, message| %>
-  <div class="alert alert-<%= type %>"><%= message %></div>
-<% end %>
 <%= render partial: "partials/user_profil", locals: { user: @user } %>
 <div class="row justify-content-center">
   <%= link_to user_foods_path(@user), class:'col-sm-5' do %>

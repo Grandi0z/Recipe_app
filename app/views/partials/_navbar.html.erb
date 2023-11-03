@@ -12,6 +12,9 @@
         <li class="nav-item"> <%= link_to "Public Recipes" , user_public_recipes_path(@user), 
             class: "nav-link" %>
         </li>
+        <li class="nav-item"> <%= link_to "Shopping list" , user_shopping_lists_path(@user), 
+            class: "nav-link" %>
+        </li>
         <li>
             <%= button_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-outline-danger"%>
         </li>

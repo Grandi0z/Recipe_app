@@ -12,7 +12,9 @@
     <%= form_for @recipe, url: user_recipe_path(@user, @recipe), method: :patch do |f| %>
           <div class="form-check toggle_btn form-switch" role="group" aria-label="Basic radio toggle button group">
             <%= f.label :public, @recipe.public? ? "Public" : "Private", class: "btn btn-outline-info", for: "public" %>
-            <%= f.check_box :public, class: "form-check-input", id: "public", onchange: "this.form.submit()" %>
+            <%if can? :manage, @recipe%>
+              <%= f.check_box :public, class: "form-check-input", id: "public", onchange: "this.form.submit()" %>
+            <%end%>
           </div>
     <% end %>
   </div>

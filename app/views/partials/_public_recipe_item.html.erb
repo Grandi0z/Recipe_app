@@ -3,7 +3,7 @@
     <div class="col-md-4">
       <%# recipe_food is a array in witch the first element is the recipe object
           and second element is a aray of food and quantity hahes
-          that means recipe_food look like this [{recipe=>[{food,quantity},{food,quantity}]}] %>
+          that means recipe_food look like this [{recipe_id=>[{food,quantity, recipe},{food,quantity,recipe}]}] %>
       <%=link_to user_recipe_path(user, recipe_food[0]) do%>
         <h3><%=recipe_food[0].name%></h3> 
       <%end%>

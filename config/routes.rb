@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'shopping_lists/index'
   get 'public_recipes/index'
   get 'public_recipes/show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
         resources :recipe_foods
       end
       resources :public_recipes, only:[:index, :show]
+      resources :shopping_lists, only:[:index]
     end
   end  
   resources :public_recipes, only:[:index, :show]

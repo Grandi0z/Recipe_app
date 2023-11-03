@@ -1,0 +1,15 @@
+/* app/assets/stylesheets/application.css */
+
+/* Define the dark theme colors */
+:root {
+  --dark-bg-color: #000;
+  --dark-text-color: #fff;
+}
+
+/* Apply the dark theme if the user prefers dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--dark-bg-color);
+    color: var(--dark-text-color);
+  }
+}
