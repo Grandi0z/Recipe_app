@@ -1,0 +1,10 @@
+<h1>Add a food</h1>
+<div>
+  <%= bootstrap_form_for @food, url: user_foods_path(@user), class:'form' do |f| %>
+  <%= f.text_field :name, class:"", required: true, style:"width:50%" %>
+  <%= f.text_field :measurement_unit, min: 1, class:"", required: true, style:"width:50%" %>
+  <%= f.number_field :price, step: 0.01, class:"", required: true, style:"width:50%" %>
+  <%= f.number_field :quantity, min: 0, class:"", required: true, style:"width:50%" %>
+  <%= f.submit %>
+<% end %>
+</div>

@@ -1,0 +1,47 @@
+<h1>Foods</h1>
+<%# flash messages %>
+<div>
+  <div>
+    <%=
+        link_to "Add food",
+        new_user_food_path,
+        class:"btn btn-outline-primary"
+    %>
+  </div>
+  <table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Food</th>
+        <th scope="col">Measurement unit</th>
+        <th scope="col">Unit price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@foods.each_with_index do |food, index|%>
+        <tr>
+          <th scope="row"><%=index + 1%></th>
+          <td><%=food.name%></td>
+          <td><%=food.measurement_unit%></td>
+          <td><%=food.price%>$</td>
+          <td><%=food.quantity%></td>
+          <td>
+            <%if can? :delete, food%>
+              <%=button_to 'Delete',
+                    [@user, food],
+                    method: :delete,
+                    class: "btn btn-outline-danger"
+                %>
+            <%end%>
+          </td>
+        </tr>
+        <%# In case we have a error %>
+  <%= render partial: "partials/errors", locals: { errors: food.errors } %>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+
+

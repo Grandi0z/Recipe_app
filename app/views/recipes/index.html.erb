@@ -1,0 +1,17 @@
+<h1>Recipes</h1>
+<div>
+  <div>
+    <%=
+        link_to "Create recipe",
+        new_user_recipe_path,
+        class:"btn btn-outline-primary my-3"
+    %>
+  </div>
+  <div>
+    <%@recipes.each do |recipe|%>
+        <%= render partial: "partials/recipe_item", locals: {recipe:recipe}%>
+      <%# In case we have a error %>
+      <%= render partial: "partials/errors", locals: { errors: recipe.errors } %>
+    <%end%>
+  </div>
+</div>

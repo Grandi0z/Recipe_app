@@ -1,0 +1,27 @@
+<h1><%=@recipe.name%></h1>
+<div>
+  <div style="display:flex; justify-content: space-between;">
+    <div class='row my-2'>
+      <strong class='my-3'>
+        Preparation time: <%=minutes_to_hours(@recipe.preparation_time)%>
+      </strong>
+      <strong>
+        coking time: <%=minutes_to_hours(@recipe.cooking_time)%>
+      </strong>
+    </div>
+    <%= form_for @recipe, url: user_recipe_path(@recipe.user, @recipe), method: :patch do |f| %>
+          <div class="form-check toggle_btn form-switch" role="group" aria-label="Basic radio toggle button group">
+            <%= f.label :public, @recipe.public? ? "Public" : "Private", class: "btn btn-outline-info", for: "public" %>
+            <%if can? :manage, @recipe%>
+              <%= f.check_box :public, class: "form-check-input", id: "public", onchange: "this.form.submit()" %>
+            <%end%>
+          </div>
+    <% end %>
+  </div>
+  <div>
+    <h3>Description</h3>
+    <%=@recipe.description%>
+  </div>
+  <%=render 'recipe_foods/index' %>
+  <%= render partial: "partials/errors", locals: { errors: @recipe.errors } %>
+</div>
