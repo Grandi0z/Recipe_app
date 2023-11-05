@@ -1,4 +1,4 @@
-<h1>Add ingrediens to <%= @recipe.name %></h1>
+<h1>Add ingrediens to <%=link_to @recipe.name, user_recipe_path(@recipe.user, @recipe)  %></h1>
 <div class="table-body">
       <div class="table-row head-row" >
         <div class="table-cell-1">No</div>
@@ -20,7 +20,7 @@
             <%= f.hidden_field :food_id, value: food.id %>
             <%= f.number_field :quantity, required: true, min: 0, step: 0.1,
                                 class: "form-control", style: "width:60%", placeholder: "Enter quantity"%>
-             <strong> <%= food.measurement_unit %></strong> 
+             <strong> <%=food.measurement_unit %></strong> 
           </div>
           <div class="table-cell">
             <%= f.submit "Add ingredien", class: "btn btn-outline-success" %>

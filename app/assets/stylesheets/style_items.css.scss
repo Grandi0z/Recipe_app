@@ -6,6 +6,17 @@
   --dark-text-color: #fff;
 }
 
+a {
+  text-decoration: none;
+}
+
+div#recipes_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
 /* Apply the dark theme if the user prefers dark mode */
 @media (prefers-color-scheme: dark) {
   body {

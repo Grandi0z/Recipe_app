@@ -7,7 +7,7 @@
         class:"btn btn-outline-primary my-3"
     %>
   </div>
-  <div>
+  <div id="recipes_container">
     <%@recipes.each do |recipe|%>
         <%= render partial: "partials/recipe_item", locals: {recipe:recipe}%>
       <%# In case we have a error %>

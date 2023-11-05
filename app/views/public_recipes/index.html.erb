@@ -1,5 +1,5 @@
 <h1>Public Recipes</h1>
-<div>
+<div id="recipes_container">
     <%# groupe recipe and it's details ingredient in a hash %>
     <%hash_recipes = group_by_recipe(@recipes_foods)%>
     <%hash_recipes.each do |recipe_item|%>
