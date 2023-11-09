@@ -1,11 +1,11 @@
 <h1>Create recipe</h1>
-<div>
+<div class='px-5 py-3'>
   <%= bootstrap_form_for @recipe, url: user_recipes_path(@user), class:"form" do |f| %>
     <%= f.text_field :name, style:"width:50%" %>
     <%= f.number_field :preparation_time, min: 0, style:"width:50%" %>
     <%= f.number_field :cooking_time, min: 0, style:"width:50%" %>
     <%= f.text_area :description, style:"width:50%" %>
     <%= f.check_box :public %>
-    <%= f.submit %>
+    <%= f.submit class:'btn btn-outline-primary'%>
   <% end %>
 </div>
